@@ -30,6 +30,7 @@ function GuessInput({ addNewGuess, answer, guesses }) {
       )}
       {isCorrect && <Happybanner guesses={guesses} />}
       {isGameOver && <Sadbanner />}
+      {isGameOver && <Sadbanner />}
     </form>
   );
 }
