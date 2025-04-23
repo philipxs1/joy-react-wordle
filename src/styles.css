@@ -230,3 +230,18 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+.keyboard-wrapper {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+}
+
+.keyboard-span {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 2px solid var(--color-gray-700);
+  border-radius: var(--radius);
+  font-size: 2rem;
+}
