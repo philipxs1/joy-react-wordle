@@ -13,14 +13,14 @@ import Happybanner from "../Happybanner/Happybanner";
 import Sadbanner from "../Sadbanner/Sadbanner";
 import Keyboard from "../Keyboard/Keyboard";
 // Pick a random word on every pageload.
-const answer = sample(WORDS);
+
 // To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
+  const [answer, setAnswer] = useState(sample(WORDS));
   const [gameStatus, setGameStatus] = useState("running");
-
   const [guesses, setGuesses] = useState([]);
+  console.info({ answer });
 
   function addNewGuess(guess) {
     const nextGuess = [...guesses, guess];
@@ -31,6 +31,12 @@ function Game() {
     } else if (nextGuess.length >= NUM_OF_GUESSES_ALLOWED) {
       setGameStatus("lost");
     }
+  }
+  function resetGame() {
+    const newAnswer = sample(WORDS);
+    setAnswer(newAnswer);
+    setGameStatus("running");
+    setGuesses([]);
   }
 
   const validateGuess = guesses.map((guess) => checkGuess(guess, answer));
@@ -43,8 +49,8 @@ function Game() {
 
       <Keyboard validateGuess={validateGuess} />
 
-      {gameStatus === "win" && <Happybanner guesses={guesses} />}
-      {gameStatus === "lost" && <Sadbanner />}
+      {gameStatus === "win" && <Happybanner guesses={guesses} resetGame={resetGame} />}
+      {gameStatus === "lost" && <Sadbanner resetGame={resetGame} />}
     </>
   );
 }
