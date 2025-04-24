@@ -41,7 +41,7 @@ function Game() {
 
       <GuessInput gameStatus={gameStatus} addNewGuess={addNewGuess} />
 
-      <Keyboard />
+      <Keyboard validateGuess={validateGuess} />
 
       {gameStatus === "win" && <Happybanner guesses={guesses} />}
       {gameStatus === "lost" && <Sadbanner />}

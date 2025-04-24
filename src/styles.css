@@ -254,3 +254,16 @@ h1 {
   font-size: 1rem;
   font-weight: 600;
 }
+
+.keyboard-letter.correct {
+  background: var(--color-success);
+  color: white;
+}
+.keyboard-letter.incorrect {
+  background: var(--color-gray-300);
+  color: white;
+}
+.keyboard-letter.misplaced {
+  background: var(--color-warning);
+  color: white;
+}
